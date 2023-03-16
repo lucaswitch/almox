@@ -1,0 +1,14 @@
+{
+  "name": "pi8",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Ichedt/pi8.git",
+  "author": "Lucas Alves <lucas.developing@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.2.47",
+    "vue-router": "4",
+    "vuetify": "^3.1.10",
+    "webfontloader": "^1.6.28"
+  }
+}
