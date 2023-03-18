@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "almox_user",
+    "password": "password",
+    "database": "almox",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "almox_user",
+    "password": "password",
+    "database": "almox",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "almox_user",
+    "password": "password",
+    "database": "almox",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
