@@ -1,5 +1,5 @@
 import express from 'express';
-import {signIn} from "./routes.js";
+import {signIn} from "./routes/sign-in/index.js";
 import bodyParser from 'body-parser';
 /**
  * Inicia o servidor.
