@@ -1,7 +1,9 @@
 'use strict';
-import {User} from './definitions'
-import Sequelize from 'sequelize'
-import process from 'process'
+import {Sequelize, DataTypes} from 'sequelize';
+import dotenv from 'dotenv';
+
+dotenv.config()
+
 const config = {
     "username": process.env.MYSQL_DATABASE_USER,
     "password": process.env.MYSQL_DATABASE_PASSWORD,
@@ -11,21 +13,38 @@ const config = {
     "use_env_variable": false
 }
 
-let sequelize;
-if (config.use_env_variable) {
-    sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-    sequelize = new Sequelize(config.database, config.database.username, config.database.password, config);
-}
 
-const db = {};
-db[User.name] = User(sequelize);
-
-Object.keys(db).forEach(modelName => {
-    if (db[modelName].associate) {
-        db[modelName].associate(db);
-    }
+export const sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: config.host,
+    dialect: config.dialect,
+    freezeTableName: true
 });
 
-db.sequelize = sequelize;
-module.exports = db;
+export const User = sequelize.define('user', {
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    full_name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    created_at: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    updated_at: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+}, {
+    tableName: 'user',
+    timestamps: true,
+    updatedAt: 'updated_at',
+    createdAt: 'created_at'
+});
