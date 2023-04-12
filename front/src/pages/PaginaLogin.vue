@@ -28,7 +28,7 @@
         ></v-text-field>
 
         <br>
-        
+
 
         <v-btn
           :disabled="!form"
@@ -60,8 +60,7 @@
       password: null,
       loading: false,
       rules: {
-          required: value => !!value || 'Campo obrigatório',
-          emailMatch: () => (`The email and password you entered don't match`),
+          required: value => !!value || 'Campo obrigatório'
         },
     }),
     methods: {
