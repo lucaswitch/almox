@@ -26,7 +26,7 @@ export async function signIn(request, response) {
         });
     }
     return response.status(200).json({
-        user: await getUser(request.body),
+        user: await getUser({username: request.body.username, password: request.body.password}),
         token
     })
 }
@@ -54,7 +54,7 @@ async function getUser({username, password}) {
  */
 async function getToken({username, password}) {
 
-    const user = getUser({username, password});
+    const user = await getUser({username, password});
     if (user) {
         return jwt.sign({sub: user.id, name: user.full_name},
             JWT_SIGNATURE
