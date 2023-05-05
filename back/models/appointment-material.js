@@ -1,5 +1,7 @@
 import { DataTypes } from "sequelize";
-import { Appointment, Material, sequelize } from "./index.js";
+import { sequelize } from "./index.js";
+import { Appointment } from "./appointment.js";
+import { Material } from "./material.js";
 
 export const AppointmentMaterial = sequelize.define(
   "appointment_material",
@@ -26,11 +28,11 @@ export const AppointmentMaterial = sequelize.define(
       default: 0,
     },
     created_at: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     updated_at: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
   },

@@ -1,5 +1,7 @@
 import { DataTypes } from "sequelize";
-import { Lab, sequelize, User } from "./index.js";
+import { sequelize } from "./index.js";
+import { Lab } from "./lab.js";
+import { User } from "./user.js";
 
 export const Appointment = sequelize.define(
   "appointment",
@@ -34,11 +36,11 @@ export const Appointment = sequelize.define(
       type: DataTypes.DATE,
     },
     created_at: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     updated_at: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
   },

@@ -13,10 +13,6 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.BIGINT
             },
-            appointment_id: {
-                allowNull: false,
-                type: Sequelize.BIGINT
-            },
             scheduled_by: {
                 allowNull: false,
                 type: Sequelize.BIGINT

@@ -13,7 +13,7 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.BIGINT
             },
-            appointment_material_id: {
+            appointment_id: {
                 allowNull: false,
                 type: Sequelize.BIGINT
             },
