@@ -47,7 +47,7 @@ const router = createRouter({
     { path: "/professores", name:'professores', component: PaginaProfessores },
     { path: "/administradores", name:'admins', component: PaginaAdministradores },
     { path: "/login", name:'login', component: PaginaLogin },
-    { path: "/signin", name:'singin', component: PaginaSignin },
+    { path: "/signin", name:'signin', component: PaginaSignin },
     { path: "/:notFound(.*)", name:'notfound', component: NotFound },
   ],
 });

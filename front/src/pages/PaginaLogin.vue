@@ -52,6 +52,8 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     data: () => ({
       show1: false,
@@ -63,6 +65,17 @@
           required: value => !!value || 'Campo obrigatório'
         },
     }),
+
+    //Data for login
+    loginData() {
+      return {
+        postData: {
+          username: '',
+          password:  ''
+        }
+      }
+    },
+
     methods: {
       onSubmit () {
         if (!this.form) return
@@ -72,6 +85,15 @@
       required (v) {
         return !!v || 'Campo obrigatório'
       },
-    },
+  
+      //Login post
+      signInPost() {
+        axios
+        .post('http://localhost:3000/sign-in', this.postData)
+        .then((response) => console.log(response))
+      }
+    }
+
   }
+
 </script>
