@@ -1,5 +1,5 @@
 import {DataTypes} from "sequelize";
-import {sequelize} from "./index.js";
+import {sequelize} from "./index.cjs";
 
 export const Lab = sequelize.define('lab', {
     name: {

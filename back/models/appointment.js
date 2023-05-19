@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "./index.js";
+import { sequelize } from "./index.cjs";
 import { Lab } from "./lab.js";
 import { User } from "./user.js";
 
