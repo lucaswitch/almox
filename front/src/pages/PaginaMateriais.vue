@@ -29,12 +29,39 @@
         >
       </v-card-actions>
     </v-card>
+    <button @click="getMaterials">Get materials</button>
+    <div>
+      {{ materialList }}
+    </div>
   </v-container>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   props: ["id"],
+
+  data() {
+    return {
+      materialList: []
+    }
+  },
+  methods: {
+    getMaterials:function() {
+      var vm = this;
+      axios.get('http://34.151.221.81/materials')
+      .then((response) => {
+        vm.materialList = response.data;
+          console.log(vm.materialList);
+      }).catch(function(error){
+          console.log('erros : ',error);
+      }) 
+    }
+  },
+
+
+
   computed: {
     materiais() {
       return this.$store.getters["materiais/materiais"];

@@ -35,7 +35,7 @@ const NotFound = () => import("./pages/NotFound.vue");
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", redirect: "/inicio" },
+    { path: "/", redirect: "/login" },
     { path: "/inicio", name:'home', component: PaginaInicial },
     { path: "/agenda", name:'agenda', component: PaginaAgenda },
     { path: "/agenda/reservar", name:'reservas', component: PaginaAgendaReservar },

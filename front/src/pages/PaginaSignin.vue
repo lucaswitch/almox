@@ -1,58 +1,64 @@
 <template>
-  <v-card
-    class="mx-auto"
-    max-width="344"
-    title="Cadastre-se"
-  >
-    <v-container>
+  <v-sheet rounded>
+    <h1 class="d-flex justify-center mb-10">Cadastre-se</h1>
+    <v-card class="mx-auto px-6 py-8" style="background-color: #e8f4f4" max-width="344">
+      <v-form
+        v-model="form"
+        @submit.prevent="onSubmit"
+      >
       <v-text-field
-        v-model="first"
-        color="primary"
-        label="Primeiro nome"
-        variant="underlined"
-      ></v-text-field>
+          v-model="text"
+          :readonly="loading"
+          :rules="[required]"
+          class="mb-2"
+          clearable
+          label="Nome Completo"
+          placeholder="João Silva"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="last"
-        color="primary"
-        label="Sobrenome"
-        variant="underlined"
-      ></v-text-field>
+        <v-text-field
+          v-model="email"
+          :readonly="loading"
+          :rules="[required]"
+          class="mb-2"
+          clearable
+          label="Email"
+          placeholder="joaosilva@ceub.edu.br"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="email"
-        color="primary"
-        label="Email"
-        variant="underlined"
-      ></v-text-field>
-
-      <v-text-field
+        <v-text-field
         v-model="password"
-        color="primary"
-        label="Senha"
-        placeholder="Enter your password"
-        variant="underlined"
-      ></v-text-field>
+            :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+            :rules="[rules.required, rules.min]"
+            :type="show1 ? 'text' : 'password'"
+            name="input-10-1"
+            label="Senha"
+            @click:append-inner="show1 = !show1"
+            clearable=""
+        ></v-text-field>
 
-      <v-checkbox
-        v-model="terms"
-        color="secondary"
-        label="I agree to site terms and conditions"
-      ></v-checkbox>
-    </v-container>
+        <br>
 
-    <v-divider></v-divider>
 
-    <v-card-actions>
-      <v-spacer></v-spacer>
-
-      <v-btn color="success">
-        Complete Registration
-
-        <v-icon icon="mdi-chevron-right" end></v-icon>
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+        <v-btn
+          :disabled="!form"
+          :loading="loading"
+          block
+          color="success"
+          size="large"
+          type="submit"
+          variant="elevated"
+        >
+          Entrar
+        </v-btn>
+      </v-form>
+      <br>
+      <p class="d-flex justify-center">Já possui uma conta?</p>
+      <span class="d-flex justify-center">
+        <router-link to="login">Faça seu login</router-link>
+      </span>
+    </v-card>
+  </v-sheet>
 </template>
 
 <script>
