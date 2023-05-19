@@ -1,6 +1,6 @@
 "use strict";
 const moment = require("moment");
-const {Lab} = await import("../models/lab.js")
+const {Lab} = import("../models/lab.js")
 
 /** @type {import("sequelize-cli").Migration} */
 module.exports = {
