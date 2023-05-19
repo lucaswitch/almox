@@ -2,6 +2,8 @@
 const moment = require("moment");
 const {Lab} = import("../models/lab.js")
 
+console.log('LAB', Lab)
+
 /** @type {import("sequelize-cli").Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
