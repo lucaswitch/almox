@@ -1,6 +1,6 @@
 "use strict";
 const moment = require("moment");
-const {Lab} = import("../models/lab.js")
+const {Lab} = require("../models/lab.js")
 
 console.log('LAB', Lab)
 
