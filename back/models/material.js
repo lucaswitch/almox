@@ -1,5 +1,5 @@
 import {DataTypes} from "sequelize";
-import {sequelize} from "./index.cjs";
+import {sequelize} from "./index.js";
 
 export const Material = sequelize.define('material', {
     name: {

@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "./index.cjs";
+import { sequelize } from "./index.js";
 import { Appointment } from "./appointment.js";
 import { Material } from "./material.js";
 
