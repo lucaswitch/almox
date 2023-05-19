@@ -38,7 +38,7 @@ export function startServer() {
     );
 
 
-    app.listen(80);
+    app.listen(80, '0.0.0.0');
 
     console.info("Server listening...");
 }
