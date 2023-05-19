@@ -4,8 +4,7 @@ const moment = require("moment")
 /** @type {import("sequelize-cli").Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        const {Material} = await require( "../models/material.js");
-
+        const {Material} = await import('../models/material.js')
         await queryInterface.bulkInsert(Material.tableName, [
             {
                 name: "Água",

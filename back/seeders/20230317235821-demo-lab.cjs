@@ -1,11 +1,10 @@
 "use strict";
 const moment = require("moment");
 
-
 /** @type {import("sequelize-cli").Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        import {Lab} from '../models/lab.js'
+        const {Lab} = await import('../models/lab.js')
 
         await queryInterface.bulkInsert(Lab.tableName, [
             {
