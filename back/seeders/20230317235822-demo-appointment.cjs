@@ -1,5 +1,5 @@
 "use strict";
-import moment from "moment"
+const moment = require("moment")
 import {Appointment} from "../models/appointment.js";
 
 /** @type {import("sequelize-cli").Migration} */

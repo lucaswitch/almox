@@ -1,6 +1,6 @@
 "use strict";
-import moment from "moment";
-import {Material} from "../models/material.js";
+const moment = require("moment")
+const {Material} = require("../models/material.js");
 
 /** @type {import("sequelize-cli").Migration} */
 module.exports = {
