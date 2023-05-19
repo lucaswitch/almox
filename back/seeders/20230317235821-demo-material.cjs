@@ -1,10 +1,11 @@
 "use strict";
 const moment = require("moment")
-const {Material} = require( "../models/material.js");
 
 /** @type {import("sequelize-cli").Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
+        const {Material} = await import( "../models/material.js");
+
         await queryInterface.bulkInsert(Material.tableName, [
             {
                 name: "Água",
