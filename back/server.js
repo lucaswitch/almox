@@ -20,23 +20,6 @@ export function startServer() {
     app.get("/labs", listLabs);
     app.get("/materials", listMaterials);
     app.post("/appointments", createAppointment);
-    app.get(
-        "/appointments",
-        async function (request, response) {
-            const query = request.query;
-            let appointments = await Appointment.findAll();
-            if (query?.lab_id) {
-                appointments = appointments.filter(function (appointment) {
-                    return appointment.lab_id == query.lab_id
-                })
-            }
-
-            return response.json(
-                appointments
-            )
-        }
-    );
-
 
     app.listen(80, '0.0.0.0');
 
