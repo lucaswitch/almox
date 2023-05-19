@@ -1,5 +1,6 @@
 'use strict';
-const moment = require('moment');
+import moment from 'moment';
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {

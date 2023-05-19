@@ -1,6 +1,6 @@
 "use strict";
 import moment from "moment";
-import {Lab} from "../models/index.js";
+import {Lab} from "../models/lab.js";
 
 /** @type {import("sequelize-cli").Migration} */
 module.exports = {
