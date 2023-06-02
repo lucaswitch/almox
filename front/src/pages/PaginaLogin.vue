@@ -4,7 +4,7 @@
     <v-card class="mx-auto px-6 py-8" style="background-color: #e8f4f4" max-width="344">
       <v-form
         v-model="form"
-        @submit.prevent="submitForm"
+        @submit.prevent="signInPost"
       >
         <v-text-field
           v-model="email"
@@ -40,7 +40,7 @@
           size="large"
           type="submit"
           variant="elevated"
-          @click ="submitForm"
+          @click ="signInPost"
         >
           Entrar
         </v-btn>

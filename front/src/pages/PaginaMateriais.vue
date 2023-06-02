@@ -60,8 +60,6 @@ export default {
     }
   },
 
-
-
   computed: {
     materiais() {
       return this.$store.getters["materiais/materiais"];
