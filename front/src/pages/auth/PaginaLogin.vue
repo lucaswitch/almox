@@ -4,7 +4,7 @@
     <v-card class="mx-auto px-6 py-8" style="background-color: #e8f4f4" max-width="344">
       <v-form
         v-model="form"
-        @submit.prevent="onSubmit"
+        @submit.prevent="logInPost"
       >
         <v-text-field
           v-model="email"
@@ -15,6 +15,8 @@
           label="Email"
           placeholder="joaosilva@ceub.edu.br"
         ></v-text-field>
+
+        <p v-if="formIsValid = false">Por favor coloque um email válido!</p>
 
         <v-text-field
         v-model="password"
@@ -38,6 +40,7 @@
           size="large"
           type="submit"
           variant="elevated"
+          @click ="logInPost"
         >
           Entrar
         </v-btn>
@@ -45,17 +48,19 @@
       <br>
       <p class="d-flex justify-center">Não possui conta?</p>
       <span class="d-flex justify-center">
-        <router-link to="singin">Crie uma conta</router-link>
+        <router-link to="signin">Crie uma conta</router-link>
       </span>
     </v-card>
   </v-sheet>
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     data: () => ({
       show1: false,
-      form: false,
+      form: true,
       email: null,
       password: null,
       loading: false,
@@ -63,8 +68,24 @@
           required: value => !!value || 'Campo obrigatório'
         },
     }),
+
+    //Data for login
+    loginData() {
+      return {
+        email: '',
+        password: '',
+        formIsValid: true,
+        mode: 'login'
+      }
+    },
+
     methods: {
-      onSubmit () {
+      submitForm () {
+        this.formIsValid = true;
+        if(!this.email.includes('@ceub.edu.br')){
+          this.formIsValid = false;
+          return;
+        }
         if (!this.form) return
         this.loading = true
         setTimeout(() => (this.loading = false), 2000)
@@ -72,6 +93,15 @@
       required (v) {
         return !!v || 'Campo obrigatório'
       },
-    },
+  
+      //Login post
+      logInPost() {
+        axios
+        .post('http://34.151.221.81/sign-in', { username:this.email, password:this.password})
+        .then((response) => console.log(response))
+      }
+    }
+
   }
+
 </script>

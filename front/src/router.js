@@ -27,15 +27,15 @@ const PaginaMateriaisRegistrar = () =>
 const PaginaRelatorio = () => import("./pages/PaginaRelatorio.vue");
 const PaginaProfessores = () => import("./pages/PaginaProfessores.vue");
 const PaginaAdministradores = () => import("./pages/PaginaAdministradores.vue");
-const PaginaLogin = () => import("./pages/PaginaLogin.vue");
-const PaginaSignin = () => import("./pages/PaginaSignin.vue");
+const PaginaLogin = () => import("./pages/auth/PaginaLogin.vue");
+const PaginaSignin = () => import("./pages/auth/PaginaSignin.vue");
 const NotFound = () => import("./pages/NotFound.vue");
 
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", redirect: "/inicio" },
+    { path: "/", redirect: "/login" },
     { path: "/inicio", name:'home', component: PaginaInicial },
     { path: "/agenda", name:'agenda', component: PaginaAgenda },
     { path: "/agenda/reservar", name:'reservas', component: PaginaAgendaReservar },
@@ -47,7 +47,7 @@ const router = createRouter({
     { path: "/professores", name:'professores', component: PaginaProfessores },
     { path: "/administradores", name:'admins', component: PaginaAdministradores },
     { path: "/login", name:'login', component: PaginaLogin },
-    { path: "/signin", name:'singin', component: PaginaSignin },
+    { path: "/signin", name:'signin', component: PaginaSignin },
     { path: "/:notFound(.*)", name:'notfound', component: NotFound },
   ],
 });
