@@ -4,7 +4,7 @@
     <v-card class="mx-auto px-6 py-8" style="background-color: #e8f4f4" max-width="344">
       <v-form
         v-model="form"
-        @submit.prevent="signInPost"
+        @submit.prevent="logInPost"
       >
         <v-text-field
           v-model="email"
@@ -40,7 +40,7 @@
           size="large"
           type="submit"
           variant="elevated"
-          @click ="signInPost"
+          @click ="logInPost"
         >
           Entrar
         </v-btn>
@@ -80,25 +80,10 @@
     },
 
     methods: {
-      submitForm () {
-        this.formIsValid = true;
-        if(!this.email.includes('@ceub.edu.br')){
-          this.formIsValid = false;
-          return;
-        }
-        if (!this.form) return
-        this.loading = true
-        setTimeout(() => (this.loading = false), 2000)
-      },
-      required (v) {
-        return !!v || 'Campo obrigatório'
-      },
-
-  
       //Login post
-      signInPost() {
+      logInPost() {
         axios
-        .post('http://localhost:3000/sign-in', this.postData)
+        .post('http://34.151.221.81/sign-in', { username:this.email, password:this.password})
         .then((response) => console.log(response))
       }
     }
