@@ -27,8 +27,8 @@ const PaginaMateriaisRegistrar = () =>
 const PaginaRelatorio = () => import("./pages/PaginaRelatorio.vue");
 const PaginaProfessores = () => import("./pages/PaginaProfessores.vue");
 const PaginaAdministradores = () => import("./pages/PaginaAdministradores.vue");
-const PaginaLogin = () => import("./pages/PaginaLogin.vue");
-const PaginaSignin = () => import("./pages/PaginaSignin.vue");
+const PaginaLogin = () => import("./pages/auth/PaginaLogin.vue");
+const PaginaSignin = () => import("./pages/auth/PaginaSignin.vue");
 const NotFound = () => import("./pages/NotFound.vue");
 
 

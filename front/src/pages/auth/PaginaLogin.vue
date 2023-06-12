@@ -80,6 +80,20 @@
     },
 
     methods: {
+      submitForm () {
+        this.formIsValid = true;
+        if(!this.email.includes('@ceub.edu.br')){
+          this.formIsValid = false;
+          return;
+        }
+        if (!this.form) return
+        this.loading = true
+        setTimeout(() => (this.loading = false), 2000)
+      },
+      required (v) {
+        return !!v || 'Campo obrigatório'
+      },
+  
       //Login post
       logInPost() {
         axios

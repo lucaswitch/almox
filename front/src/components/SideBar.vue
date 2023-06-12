@@ -65,8 +65,16 @@
         router
         to="/administradores"
       ></v-list-item>
-    </v-list>
-  </v-navigation-drawer>
+      </v-list>
+      <v-divider></v-divider>
+      <v-list-subheader class="my-2">&nbsp;&nbsp;&nbsp;&nbsp; AÇÕES</v-list-subheader>
+      <v-list-item
+          prepend-icon="mdi-exit-to-app"
+          title="Sair"
+          rounded="pill"
+          router
+          to="/login"></v-list-item>
+    </v-navigation-drawer>
 </template>
 
 
