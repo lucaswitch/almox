@@ -1,11 +1,21 @@
 <template>
   <v-sheet rounded>
-    <h1 class="d-flex justify-center mb-10">Login</h1>
+    <h1 class="d-flex justify-center mb-10">Cadastre-se</h1>
     <v-card class="mx-auto px-6 py-8" style="background-color: #e8f4f4" max-width="344">
       <v-form
         v-model="form"
         @submit.prevent="onSubmit"
       >
+      <v-text-field
+          v-model="text"
+          :readonly="loading"
+          :rules="[required]"
+          class="mb-2"
+          clearable
+          label="Nome Completo"
+          placeholder="João Silva"
+        ></v-text-field>
+
         <v-text-field
           v-model="email"
           :readonly="loading"
@@ -43,9 +53,9 @@
         </v-btn>
       </v-form>
       <br>
-      <p class="d-flex justify-center">Não possui conta?</p>
+      <p class="d-flex justify-center">Já possui uma conta?</p>
       <span class="d-flex justify-center">
-        <router-link to="singin">Crie uma conta</router-link>
+        <router-link to="login">Faça seu login</router-link>
       </span>
     </v-card>
   </v-sheet>
