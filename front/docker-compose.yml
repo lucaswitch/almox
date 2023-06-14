@@ -1,12 +1,11 @@
 version: '3'
 
 services:
-  apache2:
-    image: httpd:latest    
+  nginx:
+    image: steebchen/nginx-spa
     ports:
       - 80:80
     volumes:
-      - ./dist:/usr/local/apache2/htdocs/
-      - ./apache:/usr/local/apache2/conf
+      - ./dist:/app
     restart: always
 
