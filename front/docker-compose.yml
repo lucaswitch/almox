@@ -2,7 +2,7 @@ version: '3'
 
 services:
   nginx:
-    image: steebchen/nginx-spa:stable
+    image: httpd:stable      
     ports:
       - 80:80
     volumes:
