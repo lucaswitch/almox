@@ -11,7 +11,7 @@ module.exports = defineConfig({
   devServer: {
     proxy: {
       '^/materials': {
-        target: 'http://34.151.221.81', // Substitua pelo URL do servidor que você está acessando
+        target: 'http://34.151.221.81:81', // Substitua pelo URL do servidor que você está acessando
         changeOrigin: true,
         secure: false,
       }

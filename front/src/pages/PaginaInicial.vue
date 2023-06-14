@@ -167,7 +167,7 @@ export default {
   methods: {
     getMaterials:function() {
       var vm = this;
-      axios.get('http://34.151.221.81/materials')
+      axios.get('http://34.151.221.81:81/materials')
       .then((response) => {
         vm.materialList = response.data;
           console.log(vm.materialList);

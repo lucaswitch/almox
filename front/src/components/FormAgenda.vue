@@ -120,7 +120,7 @@ export default {
   methods: {
     getLabs:function() {
       var vm = this;
-      axios.get('http://34.151.221.81/labs')
+      axios.get('http://34.151.221.81:81/labs')
       .then((response) => {
         vm.labsList = response.data;
         response.data.forEach(element => {
@@ -133,7 +133,7 @@ export default {
 
     getMaterials:function() {
       var vm = this;
-      axios.get('http://34.151.221.81/materials')
+      axios.get('http://34.151.221.81:81/materials')
       .then((response) => {
         vm.materialList = response.data;
         response.data.forEach(element => {
@@ -147,7 +147,7 @@ export default {
     postLabAppointment:function() {
       console.log("here")
       axios
-      .post('http://34.151.221.81/appointments', {lab_id: this.labId, student_capacity: this.studentCapacity,
+      .post('http://34.151.221.81:81/appointments', {lab_id: this.labId, student_capacity: this.studentCapacity,
       scheduled_at: this.date , material_ids: this.materialObj, note: this.note })
       .then((response) => console.log(response))
     },

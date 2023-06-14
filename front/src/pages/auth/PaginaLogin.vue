@@ -97,7 +97,7 @@
       //Login post
       logInPost() {
         axios
-        .post('http://34.151.221.81/sign-in', { username:this.email, password:this.password})
+        .post('http://34.151.221.81:81/sign-in', { username:this.email, password:this.password})
         .then((response) => console.log(response))
       }
     }
