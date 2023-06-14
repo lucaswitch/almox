@@ -7,6 +7,6 @@ services:
       - 80:80
     volumes:
       - ./dist:/usr/local/apache2/htdocs/
-      - ./apache:/etc/apache2
+      - ./apache:/usr/local/apache2/conf/httpd.conf
     restart: always
 
