@@ -6,6 +6,6 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./dist:/var/www/html
+      - ./dist:/usr/local/apache2/htdocs/
     restart: always
 
