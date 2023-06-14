@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  nginx:
-    image: httpd:stable      
+  apache2:
+    image: httpd:latest    
     ports:
       - 80:80
     volumes:
-      - ./dist:/usr/share/nginx/html
+      - ./dist:/var/www/html
     restart: always
 
