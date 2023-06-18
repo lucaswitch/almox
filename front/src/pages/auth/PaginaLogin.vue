@@ -98,7 +98,11 @@
       logInPost() {
         axios
         .post('http://34.151.221.81:81/sign-in', { username:this.email, password:this.password})
-        .then((response) => console.log(response))
+        .then(function (response) {
+            if (response.status == 200) {
+                window.location = "/inicio"
+            }
+        })
       }
     }
 
