@@ -4,7 +4,7 @@
     <v-card class="mx-auto px-6 py-8" style="background-color: #e8f4f4" max-width="344">
       <v-form
         v-model="form"
-        @submit.prevent="submitForm"
+        @submit.prevent="logInPost"
       >
         <v-text-field
           v-model="email"
@@ -40,7 +40,7 @@
           size="large"
           type="submit"
           variant="elevated"
-          @click ="submitForm"
+          @click ="logInPost"
         >
           Entrar
         </v-btn>
@@ -93,13 +93,16 @@
       required (v) {
         return !!v || 'Campo obrigatório'
       },
-
   
       //Login post
-      signInPost() {
+      logInPost() {
         axios
-        .post('http://localhost:3000/sign-in', this.postData)
-        .then((response) => console.log(response))
+        .post('http://34.151.221.81:81/sign-in', { username:this.email, password:this.password})
+        .then(function (response) {
+            if (response.status == 200) {
+                window.location = "/inicio"
+            }
+        })
       }
     }
 

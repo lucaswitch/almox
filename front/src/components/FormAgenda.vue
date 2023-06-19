@@ -1,8 +1,12 @@
 <template>
-  <v-form class="px-3">
+  <v-form 
+    class="px-3"
+    @submit.prevent="postLabAppointment"
+  >
     <v-row>
       <v-col>
         <v-select
+          v-model="labId"
           clearlable
           color="teal-darken-2"
           label="Laboratório"
@@ -11,6 +15,7 @@
       </v-col>
       <v-col>
         <v-text-field
+          v-model="studentCapacity"
           clearable
           color="teal-darken-2"
           label="Quantidade de alunos"
@@ -18,6 +23,7 @@
       </v-col>
       <v-col>
         <v-text-field
+          v-model="date"
           clearable
           color="teal-darken-2"
           label="Data da aula"
@@ -25,6 +31,7 @@
       </v-col>
       <v-col>
         <v-text-field
+          v-model="time"
           clearable
           color="teal-darken-2"
           label="Horário"
@@ -36,14 +43,16 @@
     <v-row class="mt-2">
       <v-col cols="9">
         <v-select
+          v-model="materialObj.materialId"
           clearlable
           color="teal-darken-2"
           label="Material"
-          :items="mats"
+          :items= 'mats'
         ></v-select>
       </v-col>
       <v-col cols="3">
         <v-text-field
+          v-model="materialObj.quantity"
           clearable
           color="teal-darken-2"
           label="Quantidade"
@@ -59,6 +68,7 @@
     >
 
     <v-textarea
+      v-model="note"
       class="mt-5"
       clearable
       auto-grow
@@ -66,7 +76,7 @@
       label="Observações"
     ></v-textarea>
 
-    <v-btn class="mr-2" rounded="pill" color="teal-darken-2">Enviar</v-btn>
+    <v-btn class="mr-2" rounded="pill" color="teal-darken-2" @click ="postLabAppointment">Enviar</v-btn>
     <v-btn
       class="ml-2"
       variant="text"
@@ -80,17 +90,67 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
-      labs: [
-        "Laboratório de Manipulação 1",
-        "Laboratório de Manipualção 2",
-        "Laboratório de Nutrição",
-        "Laboratório de Saúde",
-      ],
-      mats: ["Ácido 1", "Ácido 2", "Ácido 3", "Ácido 4"],
+      labsList: [],
+      materialList: [],
+      labs: [],
+      mats: [],
+
+      labId: '',
+      studentCapacity: null,
+      date: '',
+      time: '',
+      materialObj: { 
+        materialId: null,
+        quantity: null,
+      },
+      note: '',
     };
   },
+
+  mounted() {
+      this.getLabs();
+      this.getMaterials();
+  },
+
+  methods: {
+    getLabs:function() {
+      var vm = this;
+      axios.get('http://34.151.221.81:81/labs')
+      .then((response) => {
+        vm.labsList = response.data;
+        response.data.forEach(element => {
+          vm.labs.push(element.name)
+        });
+      }).catch(function(error){
+          console.log('erros : ',error);
+      }) 
+    },
+
+    getMaterials:function() {
+      var vm = this;
+      axios.get('http://34.151.221.81:81/materials')
+      .then((response) => {
+        vm.materialList = response.data;
+        response.data.forEach(element => {
+          vm.mats.push(element.name)
+        });
+      }).catch(function(error){
+          console.log('erros : ',error);
+      }) 
+    },
+
+    postLabAppointment:function() {
+      console.log("here")
+      axios
+      .post('http://34.151.221.81:81/appointments', {lab_id: this.labId, student_capacity: this.studentCapacity,
+      scheduled_at: this.date , material_ids: this.materialObj, note: this.note })
+      .then((response) => console.log(response))
+    },
+  }
 };
 </script>

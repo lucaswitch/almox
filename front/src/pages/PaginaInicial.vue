@@ -25,12 +25,12 @@
                 >
               </v-col>
             </v-row>
-            <v-container v-if="temMateriais">
-              <v-container v-for="material in materiais" :key="material.id">
+            <v-container v-if="getMaterials">
+              <v-container v-for="material in materialList" :key="material.id">
                 <v-banner lines="one" icon="mdi-flask" color="teal-darken-2">
                   <v-row>
                     <v-col>
-                      <v-banner-text>{{ material.nome }}</v-banner-text>
+                      <v-banner-text>{{ material.name }}</v-banner-text>
                     </v-col>
                     <v-col>
                       <v-banner-text class="ml-4">
@@ -39,7 +39,7 @@
                     </v-col>
                     <v-col>
                       <v-banner-text class="ml-7">
-                        {{ material.dataEntrada }}
+                        {{ formatDate(material.updated_at) }}
                       </v-banner-text>
                     </v-col>
                   </v-row>
@@ -150,13 +150,48 @@
 </template>
 
 <script>
+import axios from 'axios';
+import moment from 'moment';
+
 export default {
+  
+  data() {
+    return {
+      materialList: []
+    }
+  },
+
+  mounted() {
+      this.getMaterials();
+  },
+  methods: {
+    getMaterials:function() {
+      var vm = this;
+      axios.get('http://34.151.221.81:81/materials')
+      .then((response) => {
+        vm.materialList = response.data;
+          console.log(vm.materialList);
+      }).catch(function(error){
+          console.log('erros : ',error);
+      }) 
+    },
+
+    formatDate(value){
+        if (value) {
+          return moment(String(value)).format('DD/MM/YYYY')
+        }
+    },
+  },
+
   computed: {
     materiais() {
       return this.$store.getters["materiais/materiais"];
     },
     temMateriais() {
       return this.$store.getters["materiais/temMateriais"];
+    },
+    materialLink() {
+      return this.$route.path + "/" + this.id;
     },
     alertas() {
       return this.$store.getters["materiais/alertas"];
