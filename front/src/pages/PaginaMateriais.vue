@@ -29,9 +29,6 @@
         >
       </v-card-actions>
     </v-card>
-    <div>
-      {{ materialList }}
-    </div>
   </v-container>
 </template>
 
