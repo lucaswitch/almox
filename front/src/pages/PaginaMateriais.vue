@@ -24,7 +24,7 @@
           color="teal-darken-2"
           rounded="pill"
           router
-          to="/materiais/registrar"
+          to="/materiais/registrar-materiais"
           >Registrar Material</v-btn
         >
       </v-card-actions>
