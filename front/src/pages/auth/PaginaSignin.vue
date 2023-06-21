@@ -4,7 +4,7 @@
     <v-card class="mx-auto px-6 py-8" style="background-color: #e8f4f4" max-width="344">
       <v-form
         v-model="form"
-        @submit.prevent="onSubmit"
+        @submit.prevent="signUp"
       >
       <v-text-field
           v-model="text"
@@ -48,6 +48,7 @@
           size="large"
           type="submit"
           variant="elevated"
+          @click ="signUp"
         >
           Entrar
         </v-btn>
@@ -97,10 +98,16 @@
       },
   
       //Login post
-      signInPost() {
+      signUp() {
         axios
-        .post('http://localhost:3000/sign-in', this.postData)
-        .then((response) => console.log(response))
+        .post('http://34.151.221.81:81/sign-up', { username:this.email, password:this.password, full_name:this.text})
+        .then(function (response) {
+            if (response.status == 200) {
+                window.location = "/inicio"
+            } 
+        }).catch(function(error){
+          console.log('erros : ',error);
+      }) 
       }
     }
 
