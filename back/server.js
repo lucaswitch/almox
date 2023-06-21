@@ -25,7 +25,7 @@ export function startServer() {
   app.get("/materials", listMaterials);
   app.post("/appointments", createAppointment);
 
-  app.listen(80, "0.0.0.0");
+  app.listen(81, "0.0.0.0");
 
   console.info("Server listening...");
 }
