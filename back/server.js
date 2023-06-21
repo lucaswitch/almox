@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { signIn } from "./routes/sign-in/index.js";
+import { createUser } from "./routes/sign-Up/index.js";
 import bodyParser from "body-parser";
 import { listLabs } from "./routes/labs/index.js";
 import { listMaterials } from "./routes/materials/index.js";
@@ -20,6 +21,7 @@ export function startServer() {
   // Requisições
   app.post("/sign-in", signIn);
   app.get("/labs", listLabs);
+  app.post("/sign-up", createUser)
   app.get("/materials", listMaterials);
   app.post("/appointments", createAppointment);
 
