@@ -6,6 +6,10 @@ import { listLabs } from "./routes/labs/index.js";
 import { listMaterials } from "./routes/materials/index.js";
 import { createAppointment } from "./routes/appointments/index.js";
 import { Appointment } from "./models/appointment.js";
+import { createUser } from "./routes/sign-up/index.js";
+import { listUser } from "./routes/user/index.js";
+import { createLab } from "./routes/createLab/index.js";
+import { createMaterial } from "./routes/createMaterial/index.js";
 
 /**
  * Inicia o servidor.
@@ -22,8 +26,11 @@ export function startServer() {
   app.get("/labs", listLabs);
   app.get("/materials", listMaterials);
   app.post("/appointments", createAppointment);
-
-  app.listen(80, "0.0.0.0");
+  app.post("/createLab", createLab);
+  app.post("/createMaterial", createMaterial);
+  app.get("/user", listUser);
+  app.post("/sign-up", createUser);
+  app.listen(81, "0.0.0.0");
 
   console.info("Server listening...");
 }

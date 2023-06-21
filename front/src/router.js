@@ -43,7 +43,7 @@ const router = createRouter({
     { path: "/materiais/:id", name:'materiais ', component: PaginaMateriaisDetalhes, props: true },
     { path: "/materiais/devolver", name:'devolver', component: PaginaMateriaisDevolver },
     { path: "/materiais/registrar-materiais", name:'registrarMateriais', component: PaginaMateriaisRegistrar },
-    { path: "/relatorio", name:'relatório', component: PaginaRelatorio },
+    { path: "/relatorio", name:'#', component: PaginaRelatorio },
     { path: "/professores", name:'professores', component: PaginaProfessores },
     { path: "/administradores", name:'admins', component: PaginaAdministradores },
     { path: "/login", name:'login', component: PaginaLogin },

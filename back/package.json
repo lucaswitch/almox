@@ -18,8 +18,10 @@
     "jsonwebtoken": "^9.0.0",
     "momentjs": "^2.0.0",
     "mysql2": "^3.2.0",
+    "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "sequelize": "^6.30.0",
+    "sucrase": "^3.32.0",
     "yup": "^1.0.2"
   },
   "devDependencies": {
