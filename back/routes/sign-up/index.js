@@ -15,6 +15,7 @@ export async function createUser(request, response) {
   const validation = await validate(request.body, signUpSchema);
 
   if (!validation.valid) {
+    console.log("Error validation")
     return response.status(400).json({ errors: validation.errors });
   }
 
