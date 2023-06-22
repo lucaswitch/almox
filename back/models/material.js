@@ -4,59 +4,59 @@ import {sequelize} from "./index.js";
 export const Material = sequelize.define('material', {
 			name: {
                 allowNull: false,
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
 			lote: {
                 allowNull: false,
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
 			formulaQui: {
                 allowNull: false,
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
 			concentration: {
                 allowNull: false,
-                type: Sequelize.DOUBLE
+                type: DataTypes.DOUBLE
             },
 			peso: {
                 allowNull: false,
-                type: Sequelize.DOUBLE
+                type: DataTypes.DOUBLE
             },
 			marca: {
                 allowNull: false,
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
 			quantidade: {
                 allowNull: false,
-                type: Sequelize.DOUBLE
+                type: DataTypes.DOUBLE
             },
 			estoque: {
                 allowNull: false,
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
 			observation: {
                 allowNull: false,
-                type: Sequelize.TEXT
+                type: DataTypes.TEXT
             },
 			dtValid: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: DataTypes.DATE
             },
 			dtEntrad: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: DataTypes.DATE
             },
             metric: {
                 allowNull: false,
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
             created_at: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: DataTypes.DATE
             },
             updated_at: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: DataTypes.DATE
             },
 }, {
     tableName: 'material',
@@ -64,5 +64,3 @@ export const Material = sequelize.define('material', {
     updatedAt: 'updated_at',
     createdAt: 'created_at'
 });
-
-
