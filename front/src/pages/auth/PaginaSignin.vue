@@ -103,7 +103,7 @@
         .post('http://34.151.221.81:81/sign-up', { username:this.email, password:this.password, full_name:this.text})
         .then(function (response) {
             if (response.status == 200) {
-                window.location = "/inicio"
+                window.location = "/login"
             } 
         }).catch(function(error){
           console.log('erros : ',error);
