@@ -3,9 +3,7 @@ import { validate } from "../../yup.js";
 import { object, string } from "yup";
 import moment from "moment";
 
-
 export async function createUser(request, response) {
-
   const signUpSchema = object({
     username: string().required(),
     password: string().required(),
@@ -13,19 +11,19 @@ export async function createUser(request, response) {
   });
 
   const validation = await validate(request.body, signUpSchema);
-
   if (!validation.valid) {
-    console.log("Error validation")
+    console.log("Error validation");
     return response.status(400).json({ errors: validation.errors });
   }
 
+  const { username, password, full_name } = request.body;
   return response.status(200).json({
-    newUser : await User.create({
-      username: username,
-      password: password,
-      full_name: full_name,
+    newUser: await User.create({
+      username,
+      password,
+      full_name,
       created_at: moment().utc().unix(),
       updated_at: moment().utc().unix(),
-    })
+    }),
   });
 }
