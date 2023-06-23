@@ -10,7 +10,7 @@ export async function createUser(request, response) {
       password: password,
       full_name: full_name,
       created_at: moment().utc().format("YYYY-MM-DD HH:mm:ss"),
-      updated_at: moment().utc(),
+      updated_at: moment().utc().format("YYYY-MM-DD HH:mm:ss"),
     });
 
     return response.status(200).json(newUser);
