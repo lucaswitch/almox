@@ -70,6 +70,7 @@
       show1: false,
       form: false,
       email: null,
+      text: null,
       password: null,
       loading: false,
       rules: {
