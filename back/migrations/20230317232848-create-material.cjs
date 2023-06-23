@@ -14,47 +14,47 @@ module.exports = {
                 type: Sequelize.STRING
             },
 			lote: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.STRING
             },
 			formulaQui: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.STRING
             },
 			concentration: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.DOUBLE
             },
 			peso: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.DOUBLE
             },
 			marca: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.STRING
             },
 			quantidade: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.DOUBLE
             },
 			estoque: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.STRING
             },
 			observation: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.TEXT
             },
 			dtValid: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.DATE
             },
 			dtEntrad: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.DATE
             },
             metric: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.STRING
             },
             created_at: {
