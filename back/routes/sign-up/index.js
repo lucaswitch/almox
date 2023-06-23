@@ -9,8 +9,8 @@ export async function createUser(request, response) {
       username: username,
       password: password,
       full_name: full_name,
-      created_at: new Date(),
-      updated_at: new Date(),
+      created_at: moment().unix(),
+      updated_at: moment().unix(),
     });
 
     return response.status(200).json(newUser);
