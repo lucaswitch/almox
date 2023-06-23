@@ -1,11 +1,8 @@
 import { User } from "../../models/user.js";
 import moment from "moment";
 
-
 export async function createUser(request, response) {
-  const { username, password, full_name } =
-      request.body;
-
+  const { username, password, full_name } = request.body;
 
   const newUser = await User.create({
     username: username,
