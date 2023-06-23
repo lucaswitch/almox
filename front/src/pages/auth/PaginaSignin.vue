@@ -29,7 +29,7 @@
         <v-text-field
         v-model="password"
             :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-            :rules="[rules.required, rules.min]"
+            :rules="[required]"
             :type="show1 ? 'text' : 'password'"
             name="input-10-1"
             label="Senha"
