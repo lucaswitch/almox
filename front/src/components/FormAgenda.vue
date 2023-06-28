@@ -24,17 +24,23 @@
       <v-col>
         <v-text-field
           v-model="date"
+          v-mask="'##/##/####'"
           clearable
           color="teal-darken-2"
           label="Data da aula"
-        ></v-text-field>
+          prepend-inner-icon="mdi-calendar-range"
+        >
+      <v-date-picker></v-date-picker>
+      </v-text-field>
       </v-col>
       <v-col>
         <v-text-field
           v-model="time"
+          v-mask="'##:##'"
           clearable
           color="teal-darken-2"
           label="Horário"
+          append-inner-icon="mdi-clock-time-eight"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -91,7 +97,7 @@
 
 <script>
 import axios from 'axios'
-
+import {mask} from 'vue-the-mask'
 export default {
   data() {
     return {
@@ -111,6 +117,8 @@ export default {
       note: '',
     };
   },
+
+  directives: {mask},
 
   mounted() {
       this.getLabs();

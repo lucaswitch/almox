@@ -57,6 +57,7 @@
           clearable
           color="teal-darken-2"
           label="Data de entrada"
+          v-mask="'##/##/####'"
         ></v-text-field>
       </v-col>
       <v-col>
@@ -64,6 +65,7 @@
           clearable
           color="teal-darken-2"
           label="Data de validade"
+          v-mask="'##/##/####'"
         ></v-text-field>
       </v-col>
       <v-col>
@@ -111,11 +113,16 @@
 </template>
 
 <script>
+
+import {mask} from 'vue-the-mask'
+
 export default {
   data() {
     return {
       unidadeMedida: ["Mililitros", "Litros", "Miligramas", "Gramas", "Quilos"],
     };
   },
+
+  directives:{mask},
 };
 </script>
