@@ -5,7 +5,10 @@ import { createUser } from "./routes/sign-up/index.js";
 import bodyParser from "body-parser";
 import { listLabs } from "./routes/labs/index.js";
 import { listMaterials } from "./routes/materials/index.js";
-import { createAppointment } from "./routes/appointments/index.js";
+import {
+  createAppointment,
+  listAppointments,
+} from "./routes/appointments/index.js";
 import { Appointment } from "./models/appointment.js";
 import { listUser } from "./routes/user/index.js";
 import { createLab } from "./routes/createLab/index.js";
@@ -26,12 +29,13 @@ export function startServer() {
   app.get("/labs", listLabs);
   app.get("/materials", listMaterials);
   app.post("/appointments", createAppointment);
+  app.get("/appointments", listAppointments);
   app.post("/createLab", createLab);
   app.post("/createMaterial", createMaterial);
   app.get("/user", listUser);
   app.post("/sign-up", createUser);
 
-  app.listen(81, "0.0.0.0");
+  app.listen(82, "localhost");
 
   console.info("Server listening...");
 }

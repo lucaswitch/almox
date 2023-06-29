@@ -33,31 +33,33 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { BASE_URL } from "@/contants";
+import axios from "axios";
 
 export default {
-
   data() {
     return {
-      materialList: []
-    }
+      materialList: [],
+    };
   },
 
   mounted() {
-      this.getMaterials();
+    this.getMaterials();
   },
 
   methods: {
-    getMaterials:function() {
+    getMaterials: function () {
       var vm = this;
-      axios.get('http://34.151.221.81:81/materials')
-      .then((response) => {
-        vm.materialList = response.data;
+      axios
+        .get(`${BASE_URL}/materials`)
+        .then((response) => {
+          vm.materialList = response.data;
           console.log(vm.materialList);
-      }).catch(function(error){
-          console.log('erros : ',error);
-      }) 
-    }
+        })
+        .catch(function (error) {
+          console.log("erros : ", error);
+        });
+    },
   },
 };
 </script>

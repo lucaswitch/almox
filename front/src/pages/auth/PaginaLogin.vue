@@ -1,11 +1,12 @@
 <template>
   <v-sheet rounded>
     <h1 class="d-flex justify-center mb-10">Login</h1>
-    <v-card class="mx-auto px-6 py-8" style="background-color: #e8f4f4" max-width="344">
-      <v-form
-        v-model="form"
-        @submit.prevent="logInPost"
-      >
+    <v-card
+      class="mx-auto px-6 py-8"
+      style="background-color: #e8f4f4"
+      max-width="344"
+    >
+      <v-form v-model="form" @submit.prevent="logInPost">
         <v-text-field
           v-model="email"
           :readonly="loading"
@@ -16,21 +17,20 @@
           placeholder="joaosilva@ceub.edu.br"
         ></v-text-field>
 
-        <p v-if="formIsValid = false">Por favor coloque um email válido!</p>
+        <p v-if="(formIsValid = false)">Por favor coloque um email válido!</p>
 
         <v-text-field
-        v-model="password"
-            :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-            :rules="[rules.required, rules.min]"
-            :type="show1 ? 'text' : 'password'"
-            name="input-10-1"
-            label="Senha"
-            @click:append-inner="show1 = !show1"
-            clearable=""
+          v-model="password"
+          :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          :rules="[rules.required, rules.min]"
+          :type="show1 ? 'text' : 'password'"
+          name="input-10-1"
+          label="Senha"
+          @click:append-inner="show1 = !show1"
+          clearable=""
         ></v-text-field>
 
-        <br>
-
+        <br />
 
         <v-btn
           :disabled="!form"
@@ -40,12 +40,12 @@
           size="large"
           type="submit"
           variant="elevated"
-          @click ="logInPost"
+          @click="logInPost"
         >
           Entrar
         </v-btn>
       </v-form>
-      <br>
+      <br />
       <p class="d-flex justify-center">Não possui conta?</p>
       <span class="d-flex justify-center">
         <router-link to="signin">Crie uma conta</router-link>
@@ -55,57 +55,59 @@
 </template>
 
 <script>
-  import axios from 'axios'
+import { BASE_URL } from "@/contants";
+import axios from "axios";
 
-  export default {
-    data: () => ({
-      show1: false,
-      form: true,
-      email: null,
-      password: null,
-      loading: false,
-      rules: {
-          required: value => !!value || 'Campo obrigatório'
-        },
-    }),
+export default {
+  data: () => ({
+    show1: false,
+    form: true,
+    email: null,
+    password: null,
+    loading: false,
+    rules: {
+      required: (value) => !!value || "Campo obrigatório",
+    },
+  }),
 
-    //Data for login
-    loginData() {
-      return {
-        email: '',
-        password: '',
-        formIsValid: true,
-        mode: 'login'
+  //Data for login
+  loginData() {
+    return {
+      email: "",
+      password: "",
+      formIsValid: true,
+      mode: "login",
+    };
+  },
+
+  methods: {
+    submitForm() {
+      this.formIsValid = true;
+      if (!this.email.includes("@ceub.edu.br")) {
+        this.formIsValid = false;
+        return;
       }
+      if (!this.form) return;
+      this.loading = true;
+      setTimeout(() => (this.loading = false), 2000);
+    },
+    required(v) {
+      return !!v || "Campo obrigatório";
     },
 
-    methods: {
-      submitForm () {
-        this.formIsValid = true;
-        if(!this.email.includes('@ceub.edu.br')){
-          this.formIsValid = false;
-          return;
-        }
-        if (!this.form) return
-        this.loading = true
-        setTimeout(() => (this.loading = false), 2000)
-      },
-      required (v) {
-        return !!v || 'Campo obrigatório'
-      },
-  
-      //Login post
-      logInPost() {
-        axios
-        .post('http://34.151.221.81:81/sign-in', { username:this.email, password:this.password})
-        .then(function (response) {
-            if (response.status == 200) {
-                window.location = "/inicio"
-            }
+    //Login post
+    logInPost() {
+      axios
+        .post(`${BASE_URL}/sign-in`, {
+          username: this.email,
+          password: this.password,
         })
-      }
-    }
-
-  }
-
+        .then(function (response) {
+          if (response.status == 200) {
+            window.location = "/inicio";
+          }
+        });
+    },
+  },
+};
 </script>
