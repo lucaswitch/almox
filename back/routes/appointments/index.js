@@ -6,6 +6,7 @@ import {
   sequelize,
 } from "../../models/index.js";
 import moment from "moment";
+import { QueryTypes } from "sequelize";
 
 /**
  * Cria marcação de horário de laboratório.
@@ -28,8 +29,8 @@ export async function createAppointment(request, response) {
       scheduled_at: scheduledAt.format("YYYY-MM-DD HH:mm:ss"),
       student_capacity: student_capacity,
       note: note,
-      created_at: moment().utc().unix(),
-      updated_at: moment().utc().unix(),
+      created_at: moment().utc().format("YYYY-MM-DD HH:mm:ss"),
+      updated_at: moment().utc().format("YYYY-MM-DD HH:mm:ss"),
       scheduled_by: 1,
     });
 
@@ -39,8 +40,8 @@ export async function createAppointment(request, response) {
         material_id: material.id,
         appointment_id: appointment.id,
         quantity: materials[i].quantity,
-        created_at: moment().utc().unix(),
-        updated_at: moment().utc().unix(),
+        created_at: moment().utc().format("YYYY-MM-DD HH:mm:ss"),
+        updated_at: moment().utc().format("YYYY-MM-DD HH:mm:ss"),
       });
     }
 
@@ -74,9 +75,10 @@ export async function listAppointments(req, res) {
         
     WHERE
         1=1        
-    ORDER BY appointment.created_at DESC
+    ORDER BY appointment.scheduled_at DESC
     LIMIT 10; 
-  `
+  `,
+    { raw: true }
   );
   return res.status(200).json(appointments);
 }

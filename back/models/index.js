@@ -14,6 +14,9 @@ const config = {
   additional: {
     timestamps: false,
   },
+  define: {
+    timestamps: false,
+  },
   use_env_variable: false,
 };
 
@@ -30,3 +33,5 @@ export const sequelize = new Sequelize(
 
 export const { Appointment, AppointmentMaterial, Lab, Material, User } =
   initModels(sequelize);
+
+export default sequelize;

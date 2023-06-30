@@ -4,7 +4,7 @@ const moment = require("moment");
 /** @type {import("sequelize-cli").Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        const {Lab} = await import('../models/lab.js')
+        const {Lab} = await import('../models/index.js')
 
         await queryInterface.bulkInsert(Lab.tableName, [
             {
