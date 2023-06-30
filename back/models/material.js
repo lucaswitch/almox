@@ -1,66 +1,76 @@
-import {DataTypes} from "sequelize";
-import {sequelize} from "./index.js";
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
 
-export const Material = sequelize.define('material', {
-			name: {
-                allowNull: false,
-                type: DataTypes.STRING
-            },
-			lote: {
-                allowNull: false,
-                type: DataTypes.STRING
-            },
-			formulaQui: {
-                allowNull: false,
-                type: DataTypes.STRING
-            },
-			concentration: {
-                allowNull: false,
-                type: DataTypes.DOUBLE
-            },
-			peso: {
-                allowNull: false,
-                type: DataTypes.DOUBLE
-            },
-			marca: {
-                allowNull: false,
-                type: DataTypes.STRING
-            },
-			quantidade: {
-                allowNull: false,
-                type: DataTypes.DOUBLE
-            },
-			estoque: {
-                allowNull: false,
-                type: DataTypes.STRING
-            },
-			observation: {
-                allowNull: false,
-                type: DataTypes.TEXT
-            },
-			dtValid: {
-                allowNull: false,
-                type: DataTypes.DATE
-            },
-			dtEntrad: {
-                allowNull: false,
-                type: DataTypes.DATE
-            },
-            metric: {
-                allowNull: false,
-                type: DataTypes.STRING
-            },
-            created_at: {
-                allowNull: false,
-                type: DataTypes.DATE
-            },
-            updated_at: {
-                allowNull: false,
-                type: DataTypes.DATE
-            },
-}, {
+export default class Material extends Model {
+  static init(sequelize, DataTypes) {
+  return sequelize.define('Material', {
+    id: {
+      autoIncrement: true,
+      type: DataTypes.BIGINT,
+      allowNull: false,
+      primaryKey: true
+    },
+    name: {
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
+    lote: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    formulaQui: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    concentration: {
+      type: DataTypes.DOUBLE,
+      allowNull: true
+    },
+    peso: {
+      type: DataTypes.DOUBLE,
+      allowNull: true
+    },
+    marca: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    quantidade: {
+      type: DataTypes.DOUBLE,
+      allowNull: true
+    },
+    estoque: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    observation: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    dtValid: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    dtEntrad: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    metric: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    }
+  }, {
     tableName: 'material',
     timestamps: true,
-    updatedAt: 'updated_at',
-    createdAt: 'created_at'
-});
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+    ]
+  });
+  }
+}

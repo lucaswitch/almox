@@ -1,9 +1,10 @@
-import { Lab } from "../../models/lab.js";
-import { Material } from "../../models/material.js";
-import { Appointment } from "../../models/appointment.js";
-import { AppointmentMaterial } from "../../models/appointment-material.js";
-import { sequelize } from "./../../models";
-
+import { Lab } from "../../models/index.js";
+import {
+  Material,
+  Appointment,
+  AppointmentMaterial,
+  sequelize,
+} from "../../models/index.js";
 import moment from "moment";
 
 /**
@@ -54,27 +55,28 @@ export async function createAppointment(request, response) {
   }
 }
 
-// todo
-export async function listAppointments() {
-  await sequelize.query(`
-    SELECT 
-        DISTINCT ON(appointment.id)
-        appointment.*
-        json_agg(
-            DISTINCT
-            jsonb_build_object(
-                'id', material.id
-            )
-        ) as materials
+/**
+ * Lista itens de agenda.
+ * @return {Promise<void>}
+ */
+export async function listAppointments(req, res) {
+  const [appointments] = await sequelize.query(
+    `
+    SELECT
+        appointment.*,
+        JSON_OBJECT(
+            'id', lab.id,
+            'name', lab.name
+        ) as lab        
     FROM
         appointment
-        INNER JOIN user ON user.id = appointment.scheduled_by
-        INNER JOIN lab ON lab.id = appointment.lab_id]
-        INNER JOIN appointment_material ON appointment_material.appointment_id = appointment.id
-        INNER JOIN material ON material.id = appointment_material.material_id
-    WHERE
-        1=1
+        INNER JOIN lab ON lab.id = appointment.lab_id
         
-    GROUP BY(appointment.id)
-  `);
+    WHERE
+        1=1        
+    ORDER BY appointment.created_at DESC
+    LIMIT 10; 
+  `
+  );
+  return res.status(200).json(appointments);
 }

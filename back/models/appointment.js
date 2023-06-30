@@ -1,53 +1,48 @@
-import { DataTypes } from "sequelize";
-import { sequelize } from "./index.js";
-import { Lab } from "./lab.js";
-import { User } from "./user.js";
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
 
-export const Appointment = sequelize.define(
-  "appointment",
-  {
-    lab_id: {
-      allowNull: false,
+export default class Appointment extends Model {
+  static init(sequelize, DataTypes) {
+  return sequelize.define('Appointment', {
+    id: {
+      autoIncrement: true,
       type: DataTypes.BIGINT,
-      references: {
-        model: Lab.name,
-        key: "id",
-      },
+      allowNull: false,
+      primaryKey: true
+    },
+    lab_id: {
+      type: DataTypes.BIGINT,
+      allowNull: false
     },
     scheduled_by: {
-      allowNull: false,
       type: DataTypes.BIGINT,
-      references: {
-        model: User.name,
-        key: "id",
-      },
+      allowNull: false
     },
     note: {
-      allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
+      allowNull: false
     },
     student_capacity: {
-      allowNull: true,
       type: DataTypes.INTEGER,
-      default: 1,
+      allowNull: true
     },
     scheduled_at: {
-      allowNull: false,
       type: DataTypes.DATE,
-    },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-  },
-  {
-    tableName: "appointment",
+      allowNull: false
+    }
+  }, {
+    tableName: 'appointment',
     timestamps: true,
-    updatedAt: "updated_at",
-    createdAt: "created_at",
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+    ]
+  });
   }
-);
+}

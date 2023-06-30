@@ -1,4 +1,4 @@
-import { Lab } from "../../models/lab.js";
+import { Lab } from "../../models/index.js";
 
 /**
  * Lida com request de login.

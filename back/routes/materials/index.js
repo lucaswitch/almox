@@ -1,4 +1,4 @@
-import { Material } from "../../models/material.js";
+import { Material } from "../../models/index.js";
 
 /**
  * Lida com request de materiais

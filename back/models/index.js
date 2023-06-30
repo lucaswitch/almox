@@ -1,6 +1,7 @@
 "use strict";
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
+import initModels from "./init-models.js";
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ const config = {
   database: process.env.MYSQL_DATABASE,
   host: "127.0.0.1",
   dialect: "mysql",
+  additional: {
+    timestamps: false,
+  },
   use_env_variable: false,
 };
 
@@ -24,4 +28,5 @@ export const sequelize = new Sequelize(
   }
 );
 
-export default sequelize;
+export const { Appointment, AppointmentMaterial, Lab, Material, User } =
+  initModels(sequelize);

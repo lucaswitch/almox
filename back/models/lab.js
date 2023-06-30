@@ -1,23 +1,32 @@
-import {DataTypes} from "sequelize";
-import {sequelize} from "./index.js";
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
 
-export const Lab = sequelize.define('lab', {
+export default class Lab extends Model {
+  static init(sequelize, DataTypes) {
+  return sequelize.define('Lab', {
+    id: {
+      autoIncrement: true,
+      type: DataTypes.BIGINT,
+      allowNull: false,
+      primaryKey: true
+    },
     name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    created_at: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    updated_at: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-
-}, {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    }
+  }, {
     tableName: 'lab',
     timestamps: true,
-    updatedAt: 'updated_at',
-    createdAt: 'created_at'
-});
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+    ]
+  });
+  }
+}

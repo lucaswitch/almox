@@ -1,6 +1,6 @@
 import { object, string } from "yup";
 import { validate } from "../../yup.js";
-import { User } from "../../models/user.js";
+import { User } from "../../models/index.js";
 import jwt from "jsonwebtoken";
 
 export const JWT_SIGNATURE =

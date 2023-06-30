@@ -9,7 +9,6 @@ import {
   createAppointment,
   listAppointments,
 } from "./routes/appointments/index.js";
-import { Appointment } from "./models/appointment.js";
 import { listUser } from "./routes/user/index.js";
 import { createLab } from "./routes/createLab/index.js";
 import { createMaterial } from "./routes/createMaterial/index.js";
