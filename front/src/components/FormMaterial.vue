@@ -17,7 +17,7 @@
         <v-text-field
           clearable
           color="teal-darken-2"
-          label="Lote"
+          label="Fórmula química"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -26,22 +26,11 @@
         <v-text-field
           clearable
           color="teal-darken-2"
-          label="Fórmula química"
-        ></v-text-field>
-      </v-col>
-      <v-col>
-        <v-text-field
-          clearable
-          color="teal-darken-2"
           label="Concentração"
         ></v-text-field>
       </v-col>
       <v-col>
-        <v-text-field
-          clearable
-          color="teal-darken-2"
-          label="Peso molecular"
-        ></v-text-field>
+        <v-text-field clearable color="teal-darken-2" label="Peso molecular" />
       </v-col>
       <v-col>
         <v-text-field
@@ -53,42 +42,11 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-text-field
-          clearable
-          color="teal-darken-2"
-          label="Data de entrada"
-          v-mask="'##/##/####'"
-        ></v-text-field>
-      </v-col>
-      <v-col>
-        <v-text-field
-          clearable
-          color="teal-darken-2"
-          label="Data de validade"
-          v-mask="'##/##/####'"
-        ></v-text-field>
-      </v-col>
-      <v-col>
-        <v-text-field
-          clearable
-          color="teal-darken-2"
-          label="Quantiadade"
-        ></v-text-field>
-      </v-col>
-      <v-col>
         <v-select
           clearable
           color="teal-darken-2"
-          label="Unidade de Medida"
-          :items="unidadeMedida"
+          label="Unidade de medida"
         ></v-select>
-      </v-col>
-      <v-col>
-        <v-text-field
-          clearable
-          color="teal-darken-2"
-          label="Estoque"
-        ></v-text-field>
       </v-col>
     </v-row>
 
@@ -97,7 +55,7 @@
       clearable
       color="teal-darken-2"
       label="Observações"
-    ></v-textarea>
+    />
 
     <v-btn class="mr-2" rounded="pill" color="teal-darken-2">Enviar</v-btn>
     <v-btn
@@ -107,22 +65,21 @@
       color="teal-darken-2"
       router
       to="/agenda"
-      >Cancelar</v-btn
-    >
+      >Cancelar
+    </v-btn>
   </v-form>
 </template>
 
 <script>
-
-import {mask} from 'vue-the-mask'
+import { mask } from "vue-the-mask";
 
 export default {
   data() {
     return {
-      unidadeMedida: ["Mililitros", "Litros", "Miligramas", "Gramas", "Quilos"],
+      default_units: ["Mililitros", "Litros", "Miligramas", "Gramas", "Quilos"],
     };
   },
 
-  directives:{mask},
+  directives: { mask },
 };
 </script>

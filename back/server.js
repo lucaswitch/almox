@@ -4,7 +4,7 @@ import { signIn } from "./routes/sign-in/index.js";
 import { createUser } from "./routes/sign-up/index.js";
 import bodyParser from "body-parser";
 import { listLabs } from "./routes/labs/index.js";
-import { listMaterials } from "./routes/materials/index.js";
+import { getMaterials, postMaterials } from "./routes/materials/index.js";
 import {
   createAppointment,
   listAppointments,
@@ -26,9 +26,15 @@ export function startServer() {
   // Requisições
   app.post("/sign-in", signIn);
   app.get("/labs", listLabs);
-  app.get("/materials", listMaterials);
+
+  // Materiais
+  app.get("/materials", getMaterials);
+  app.post("/materials", postMaterials);
+
+  // Agenda
   app.post("/appointments", createAppointment);
   app.get("/appointments", listAppointments);
+
   app.post("/createLab", createLab);
   app.post("/createMaterial", createMaterial);
   app.get("/user", listUser);
